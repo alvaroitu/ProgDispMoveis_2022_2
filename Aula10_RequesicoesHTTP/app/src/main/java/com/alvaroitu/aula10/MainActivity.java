@@ -4,6 +4,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import org.json.JSONException;
@@ -19,6 +20,7 @@ import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
+    EditText textoDigitado;
     Button botaoRecuperar;
     TextView textoResultado;
 
@@ -27,17 +29,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        textoDigitado = findViewById(R.id.textoDigitado);
         botaoRecuperar = findViewById(R.id.botaoRecuperar);
         textoResultado = findViewById(R.id.textoResultado);
 
         botaoRecuperar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 MyTask task = new MyTask();
-                String urlApi = "https://blockchain.info/ticker";
-                String cep = "13309710";
+                String urlBlockChain = "https://blockchain.info/ticker";
+//                String cep = "13309710";
+                String cep = textoDigitado.getText().toString();
                 String urlCep = "https://viacep.com.br/ws/" + cep + "/json/";
-                task.execute(urlApi);
+                task.execute(urlBlockChain);
             }
         });
     }
@@ -83,23 +88,37 @@ public class MainActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String resultado) {
             super.onPostExecute(resultado);
+
 //            String cep = null;
 //            String logradouro = null;
 //            String bairro = null;
 //            String localidade = null;
 //            String uf = null;
-//            try {
-//                JSONObject jsonObject = new JSONObject(resultado);
+//            String pais = null;
+            String info = null;
+
+            try {
+                JSONObject jsonObject = new JSONObject(resultado);
 //                cep = jsonObject.getString("cep");
+//                uf = jsonObject.getString("uf");
 //                logradouro = jsonObject.getString("logradouro");
 //                bairro = jsonObject.getString("bairro");
 //                localidade = jsonObject.getString("localidade");
 //                uf = jsonObject.getString("uf");
+//                pais = jsonObject.getString("BRL");
+//                JSONObject jsonObject1 = new JSONObject(pais);
+//                info = jsonObject1.getString("buy");
+                JSONObject pais = jsonObject.getJSONObject("BRL");
+                info = pais.getString("buy");
 
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
-            textoResultado.setText(resultado);
+
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+            textoResultado.setText(info);
+
 //            textoResultado.setText(logradouro + "\n" + bairro + "\n" +
 //                    localidade + "\n" + uf  + "\n" + cep );
 

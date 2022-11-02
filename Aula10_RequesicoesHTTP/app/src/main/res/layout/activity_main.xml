@@ -6,6 +6,12 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".MainActivity" android:orientation="vertical" android:padding="15dp">
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number"
+            android:ems="10"
+            android:id="@+id/textoDigitado"/>
     <Button
             android:text="Buscar dados"
             android:layout_width="match_parent"
