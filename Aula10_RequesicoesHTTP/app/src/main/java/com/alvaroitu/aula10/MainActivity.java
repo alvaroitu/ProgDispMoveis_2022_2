@@ -89,27 +89,27 @@ public class MainActivity extends AppCompatActivity {
         protected void onPostExecute(String resultado) {
             super.onPostExecute(resultado);
 
-//            String cep = null;
-//            String logradouro = null;
-//            String bairro = null;
-//            String localidade = null;
-//            String uf = null;
+            String cep = null;
+            String logradouro = null;
+            String bairro = null;
+            String localidade = null;
+            String uf = null;
 //            String pais = null;
-            String info = null;
+//            String info = null;
 
             try {
                 JSONObject jsonObject = new JSONObject(resultado);
-//                cep = jsonObject.getString("cep");
-//                uf = jsonObject.getString("uf");
-//                logradouro = jsonObject.getString("logradouro");
-//                bairro = jsonObject.getString("bairro");
-//                localidade = jsonObject.getString("localidade");
-//                uf = jsonObject.getString("uf");
+                cep = jsonObject.getString("cep");
+                uf = jsonObject.getString("uf");
+                logradouro = jsonObject.getString("logradouro");
+                bairro = jsonObject.getString("bairro");
+                localidade = jsonObject.getString("localidade");
+                uf = jsonObject.getString("uf");
 //                pais = jsonObject.getString("BRL");
 //                JSONObject jsonObject1 = new JSONObject(pais);
 //                info = jsonObject1.getString("buy");
-                JSONObject pais = jsonObject.getJSONObject("BRL");
-                info = pais.getString("buy");
+//                JSONObject pais = jsonObject.getJSONObject("BRL");
+//                info = pais.getString("buy");
 
 
 
@@ -117,10 +117,10 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
 
-            textoResultado.setText(info);
+//            textoResultado.setText(info);
 
-//            textoResultado.setText(logradouro + "\n" + bairro + "\n" +
-//                    localidade + "\n" + uf  + "\n" + cep );
+            textoResultado.setText(logradouro + "\n" + bairro + "\n" +
+                    localidade + "\n" + uf  + "\n" + cep );
 
         }
     }

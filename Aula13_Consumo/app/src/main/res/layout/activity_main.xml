@@ -9,16 +9,21 @@
     <EditText
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="number"
+            android:inputType="textPersonName"
             android:ems="10"
-            android:id="@+id/textoDigitado"/>
-    <Button
-            android:text="Buscar dados"
+            android:id="@+id/editText" android:hint="distancia percorrida"/>
+    <EditText
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/botaoRecuperar" android:layout_margin="10dp"
-            android:layout_marginTop="5dp"/>
+            android:layout_height="wrap_content"
+            android:inputType="textPersonName"
+            android:ems="10"
+            android:id="@+id/editText2" android:hint="autonomia"/>
+    <Button
+            android:text="Calcular"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:id="@+id/button"/>
     <TextView
             android:text="Resultado"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" android:id="@+id/textoResultado" android:gravity="center|start"/>
+            android:layout_height="122dp" android:id="@+id/textView" android:gravity="center"/>
 </LinearLayout>
